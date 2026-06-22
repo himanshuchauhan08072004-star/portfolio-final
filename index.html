@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Himanshu Chauhan — Full Stack Developer</title>
+<meta name="description" content="Himanshu Chauhan — third-year CS student building full stack and AI/ML projects. Live project demos, code, and resume." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF7;
+    --paper-2:#F3F0E8;
+    --ink:#1A1815;
+    --ink-soft:#5C5850;
+    --ink-faint:#8C8678;
+    --line:#DDD7C8;
+    --line-soft:#EAE5D9;
+    --clay:#C4502E;
+    --clay-deep:#9C3B20;
+    --clay-tint:rgba(196,80,46,0.1);
+    --sand:#E8E2D6;
+    --green:#5C7A5C;
+    --green-deep:#3F5940;
+    --card:#FFFEFB;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{
+    max-width:980px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  ::selection{ background:var(--clay); color:var(--paper); }
+
+  /* ---------- NAV ---------- */
+  nav.top{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(251,250,247,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.top .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+  }
+  .brandmark{
+    font-family:'Archivo',sans-serif;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:-0.01em;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .brandmark .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--clay);
+    display:inline-block;
+  }
+  .nav-links{
+    display:flex;
+    gap:26px;
+    align-items:center;
+  }
+  .nav-links a{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:color 0.15s ease, border-color 0.15s ease;
+  }
+  .nav-links a:hover{ color:var(--clay-deep); border-color:var(--clay-deep); }
+  .nav-cta{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    color:var(--paper);
+    background:var(--ink);
+    padding:8px 16px;
+    border-radius:6px;
+    text-decoration:none;
+    transition:background 0.15s ease;
+  }
+  .nav-cta:hover{ background:var(--clay-deep); }
+  .nav-mobile-hide{ display:flex; }
+  @media (max-width:680px){
+    .nav-mobile-hide{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:76px 0 36px;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--clay-deep);
+    margin:0 0 18px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px;
+    height:1px;
+    background:var(--clay-deep);
+    display:inline-block;
+  }
+  .status-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    color:var(--green-deep);
+    background:rgba(92,122,92,0.1);
+    border:1px solid rgba(92,122,92,0.25);
+    padding:4px 10px;
+    border-radius:20px;
+    margin-bottom:22px;
+  }
+  .status-pill .pulse{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--green);
+    position:relative;
+  }
+  .status-pill .pulse::after{
+    content:"";
+    position:absolute; inset:-3px;
+    border-radius:50%;
+    border:1px solid var(--green);
+    animation:pulse 2s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{ transform:scale(0.6); opacity:0.8; }
+    100%{ transform:scale(1.8); opacity:0; }
+  }
+  h1{
+    font-family:'Archivo',sans-serif;
+    font-weight:800;
+    font-size:clamp(36px,5.4vw,56px);
+    line-height:1.04;
+    letter-spacing:-0.02em;
+    margin:0 0 20px;
+    max-width:760px;
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--clay);
+  }
+  .sub{
+    font-size:17.5px;
+    line-height:1.62;
+    color:var(--ink-soft);
+    max-width:600px;
+    margin:0 0 30px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:8px;
+  }
+  .btn{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    border-radius:7px;
+    padding:11px 20px;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform 0.12s ease, opacity 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    border:1px solid transparent;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-primary{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+  .btn-primary:hover{ background:var(--clay-deep); border-color:var(--clay-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--line); }
+  .btn-ghost:hover{ background:var(--card); border-color:var(--clay); }
+
+  /* ---------- LIVE DEMO BLOCK ---------- */
+  .demo-block{
+    margin-top:48px;
+    border-radius:14px;
+    background:var(--ink);
+    padding:0;
+    overflow:hidden;
+    position:relative;
+  }
+  .demo-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 18px;
+    border-bottom:1px solid rgba(251,250,247,0.1);
+  }
+  .demo-bar-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .traffic-dots{ display:flex; gap:6px; }
+  .traffic-dots span{ width:9px; height:9px; border-radius:50%; }
+  .traffic-dots span:nth-child(1){ background:#E5635A; }
+  .traffic-dots span:nth-child(2){ background:#E5BE5A; }
+  .traffic-dots span:nth-child(3){ background:#5AC479; }
+  .demo-url{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:rgba(251,250,247,0.55);
+  }
+  .demo-live-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--green);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .demo-live-tag .pulse{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--green);
+  }
+  .demo-frame-wrap{
+    position:relative;
+    background:#0E0D0B;
+  }
+  .demo-frame-wrap iframe{
+    width:100%;
+    height:560px;
+    border:none;
+    display:block;
+  }
+  .demo-caption{
+    padding:16px 20px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .demo-caption p{
+    margin:0;
+    font-size:13px;
+    color:rgba(251,250,247,0.55);
+    font-family:'Inter',sans-serif;
+    max-width:480px;
+  }
+  .demo-caption .plink{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    color:var(--paper);
+    background:rgba(251,250,247,0.08);
+    border:1px solid rgba(251,250,247,0.18);
+    border-radius:6px;
+    padding:8px 14px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    white-space:nowrap;
+  }
+  .demo-caption .plink:hover{ background:rgba(251,250,247,0.14); }
+
+  @media (max-width:680px){
+    .demo-frame-wrap iframe{ height:480px; }
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding-top:90px; }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:34px;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .section-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:var(--clay-deep);
+    margin:0;
+  }
+  .section-title{
+    font-family:'Archivo',sans-serif;
+    font-weight:700;
+    font-size:30px;
+    letter-spacing:-0.015em;
+    margin:6px 0 0;
+    color:var(--ink);
+  }
+  .section-note{
+    font-size:14px;
+    color:var(--ink-faint);
+    max-width:280px;
+    text-align:right;
+  }
+  @media (max-width:680px){
+    .section-note{ text-align:left; max-width:none; }
+  }
+
+  /* reveal animation */
+  .reveal{
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ---------- WORK: featured detail card ---------- */
+  .feature-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:30px;
+    margin-bottom:22px;
+  }
+  .feature-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:16px;
+  }
+  .feature-title{
+    font-family:'Archivo',sans-serif;
+    font-weight:700;
+    font-size:22px;
+    color:var(--ink);
+    margin:0 0 6px;
+  }
+  .feature-role{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--ink-faint);
+  }
+  .feature-badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    padding:4px 10px;
+    border-radius:5px;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .feature-badge.repo{ background:var(--clay-tint); color:var(--clay-deep); }
+  .feature-desc{
+    font-size:15px;
+    line-height:1.68;
+    color:var(--ink-soft);
+    margin:0 0 20px;
+    max-width:680px;
+  }
+  .feature-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-bottom:22px;
+  }
+  @media (max-width:680px){ .feature-grid{ grid-template-columns:1fr; } }
+  .feature-point{
+    background:var(--paper-2);
+    border-radius:8px;
+    padding:14px 16px;
+  }
+  .feature-point .k{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-faint);
+    margin:0 0 5px;
+  }
+  .feature-point .v{
+    font-size:13.5px;
+    line-height:1.5;
+    color:var(--ink);
+    margin:0;
+  }
+  .feature-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-bottom:22px;
+  }
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:3px 9px;
+  }
+  .feature-links{ display:flex; gap:10px; flex-wrap:wrap; }
+  .plink-light{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    color:var(--paper);
+    background:var(--ink);
+    border-radius:6px;
+    padding:9px 16px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .plink-light:hover{ background:var(--clay-deep); }
+  .plink-light.secondary{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--line);
+  }
+  .plink-light.secondary:hover{ border-color:var(--clay); color:var(--clay-deep); }
+
+  /* ---------- WORK: concept grid ---------- */
+  .concept-row-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink-faint);
+    margin:38px 0 16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .concept-row-label::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .concept-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  @media (max-width:780px){ .concept-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .concept-grid{ grid-template-columns:1fr; } }
+  .concept-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px;
+    transition:border-color 0.15s ease, transform 0.15s ease;
+  }
+  .concept-card:hover{ border-color:var(--clay); transform:translateY(-2px); }
+  .concept-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--ink-faint);
+    background:var(--paper-2);
+    padding:3px 8px;
+    border-radius:4px;
+    display:inline-block;
+    margin-bottom:10px;
+  }
+  .concept-title{
+    font-family:'Archivo',sans-serif;
+    font-weight:600;
+    font-size:15.5px;
+    color:var(--ink);
+    margin:0 0 8px;
+  }
+  .concept-desc{
+    font-size:13px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    margin:0 0 12px;
+  }
+  .concept-stack{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    color:var(--ink-faint);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-layout{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:38px;
+    align-items:start;
+  }
+  @media (max-width:680px){
+    .about-layout{ grid-template-columns:1fr; }
+  }
+  .about-photo{
+    width:200px;
+    height:200px;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    position:relative;
+  }
+  .about-photo img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .about-text{
+    font-size:16px;
+    line-height:1.78;
+    color:var(--ink-soft);
+  }
+  .about-text strong{ color:var(--ink); font-weight:600; }
+  .about-text p{ margin:0 0 16px; }
+  .about-facts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+  }
+  .fact{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:6px 11px;
+  }
+  .fact strong{ color:var(--clay-deep); }
+
+  /* ---------- RESUME CTA ---------- */
+  .resume-band{
+    margin-top:90px;
+    background:var(--ink);
+    border-radius:14px;
+    padding:38px 36px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .resume-band h3{
+    font-family:'Archivo',sans-serif;
+    font-weight:700;
+    font-size:22px;
+    color:var(--paper);
+    margin:0 0 6px;
+  }
+  .resume-band p{
+    font-size:14px;
+    color:rgba(251,250,247,0.6);
+    margin:0;
+    max-width:420px;
+  }
+  .resume-band .btn-primary{
+    background:var(--clay);
+    border-color:var(--clay);
+    flex-shrink:0;
+  }
+  .resume-band .btn-primary:hover{ background:var(--clay-deep); border-color:var(--clay-deep); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top:80px;
+    padding:32px 0 50px;
+    border-top:1px solid var(--line);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .contact-block p{
+    margin:0;
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .contact-block strong{ color:var(--ink); font-weight:600; }
+  .contact-block a{
+    color:var(--clay-deep);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+  }
+  .contact-block a:hover{ border-color:var(--clay-deep); }
+  .footer-links{ display:flex; gap:18px; }
+  .footer-links a{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    text-decoration:none;
+  }
+  .footer-links a:hover{ color:var(--clay-deep); }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--clay);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="brandmark" href="#top"><span class="dot"></span>Himanshu Chauhan</a>
+    <div class="nav-links nav-mobile-hide">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a class="nav-cta" href="mailto:himanshuchauhan08072004@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <section class="hero" style="padding-top:56px;">
+    <p class="eyebrow">Full stack developer · student</p>
+    <div class="status-pill"><span class="pulse"></span>Open to internships</div>
+    <h1>I don't just list skills.<br>I ship things you can <em>click on.</em></h1>
+    <p class="sub">I'm Himanshu, a third-year B.Tech Computer Science student building full stack and AI/ML projects. The tools below aren't screenshots — they're live and running. Try them.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#work">See my work</a>
+      <a class="btn btn-ghost" href="mailto:himanshuchauhan08072004@gmail.com">Get in touch</a>
+    </div>
+
+    <div class="demo-block reveal" id="demo">
+      <div class="demo-bar">
+        <div class="demo-bar-left">
+          <div class="traffic-dots"><span></span><span></span><span></span></div>
+          <span class="demo-url">image-compressor-seven-theta.vercel.app</span>
+        </div>
+        <span class="demo-live-tag"><span class="pulse"></span>LIVE</span>
+      </div>
+      <div class="demo-frame-wrap" id="demoFrameWrap">
+        <iframe id="demoIframe" src="https://image-compressor-seven-theta.vercel.app" loading="lazy" title="Shrinkit live demo — try compressing an image right here"></iframe>
+        <div id="demoFallback" style="display:none; position:absolute; inset:0; align-items:center; justify-content:center; flex-direction:column; gap:14px; padding:30px; text-align:center;">
+          <p style="font-family:'Inter',sans-serif; color:rgba(251,250,247,0.7); font-size:14px; margin:0; max-width:360px;">This preview can't load embedded here, but the tool is fully live — open it directly below.</p>
+          <a class="plink" href="https://image-compressor-seven-theta.vercel.app" target="_blank" rel="noopener" style="position:static;">Open Shrinkit ↗</a>
+        </div>
+      </div>
+      <div class="demo-caption">
+        <p>This is <strong style="color:#FBFAF7;">Shrinkit</strong>, a real working tool running inside this page. Drop in an image and compress it — nothing leaves your browser.</p>
+        <a class="plink" href="https://image-compressor-seven-theta.vercel.app" target="_blank" rel="noopener">Open full screen ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head reveal">
+      <div>
+        <p class="section-label">Selected work</p>
+        <h2 class="section-title">Things I've built</h2>
+      </div>
+      <p class="section-note">Two with live, try-it-yourself demos and public code. A few smaller explorations below them.</p>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-top">
+        <div>
+          <h3 class="feature-title">Shrinkit — browser-based image compressor</h3>
+          <p class="feature-role">Solo project · live above</p>
+        </div>
+        <span class="feature-badge repo">Live + open source</span>
+      </div>
+      <p class="feature-desc">A free image compressor that runs entirely client-side using the Canvas API — no server, no upload, no sign-up. Built after repeatedly hitting "file too large" errors uploading photos to forms with strict size caps.</p>
+      <div class="feature-grid">
+        <div class="feature-point">
+          <p class="k">The problem</p>
+          <p class="v">Most online compressors upload your photo to a server first — unnecessary for something a browser can already do.</p>
+        </div>
+        <div class="feature-point">
+          <p class="k">The approach</p>
+          <p class="v">Canvas API redraws and re-encodes the image client-side with an adjustable quality slider and live size comparison.</p>
+        </div>
+      </div>
+      <div class="feature-meta">
+        <span class="chip">HTML / CSS / JS</span>
+        <span class="chip">Canvas API</span>
+        <span class="chip">Vercel</span>
+      </div>
+      <div class="feature-links">
+        <a class="plink-light" href="https://image-compressor-seven-theta.vercel.app" target="_blank" rel="noopener">Open live tool</a>
+        <a class="plink-light secondary" href="https://github.com/himanshuchauhan08072004-star/image-compressor" target="_blank" rel="noopener">View code</a>
+      </div>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-top">
+        <div>
+          <h3 class="feature-title">Peblo Story Buddy — kids' storytelling &amp; quiz app</h3>
+          <p class="feature-role">Client project · Flutter / Dart</p>
+        </div>
+        <span class="feature-badge repo">Web demo + open source</span>
+      </div>
+      <p class="feature-desc">A mobile storytelling app built for client Peblo that narrates stories aloud using text-to-speech, then follows up with an interactive comprehension quiz for young readers. The original is a Flutter app — the demo below is a browser recreation of the same core loop, so you can actually try it here.</p>
+
+      <div class="demo-block" style="margin-top:0; margin-bottom:22px;">
+        <div class="demo-bar">
+          <div class="demo-bar-left">
+            <div class="traffic-dots"><span></span><span></span><span></span></div>
+            <span class="demo-url">peblo-web-demo.vercel.app</span>
+          </div>
+          <span class="demo-live-tag"><span class="pulse"></span>LIVE</span>
+        </div>
+        <div class="demo-frame-wrap" id="pebloFrameWrap" style="background:#FBFAF7;">
+          <iframe id="pebloIframe" src="https://peblo-web-demo.vercel.app" loading="lazy" title="Peblo Story Buddy web demo — listen to a story and answer the quiz" style="height:640px;"></iframe>
+          <div id="pebloFallback" style="display:none; position:absolute; inset:0; align-items:center; justify-content:center; flex-direction:column; gap:14px; padding:30px; text-align:center; background:var(--ink);">
+            <p style="font-family:'Inter',sans-serif; color:rgba(251,250,247,0.7); font-size:14px; margin:0; max-width:360px;">This preview can't load embedded here, but the demo is fully live — open it directly below.</p>
+            <a class="plink" href="https://peblo-web-demo.vercel.app" target="_blank" rel="noopener" style="position:static;">Open Peblo demo ↗</a>
+          </div>
+        </div>
+        <div class="demo-caption">
+          <p>Click <strong style="color:#FBFAF7;">Listen to the story</strong> for narration, then answer the question that follows.</p>
+          <a class="plink" href="https://peblo-web-demo.vercel.app" target="_blank" rel="noopener">Open full screen ↗</a>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-point">
+          <p class="k">State &amp; flow</p>
+          <p class="v">App state managed with the Provider pattern, coordinating async TTS playback with UI transitions — the quiz auto-appears the moment narration finishes.</p>
+        </div>
+        <div class="feature-point">
+          <p class="k">Custom motion</p>
+          <p class="v">Hand-built animations: a pulsing avatar synced to narration, an elastic-curve story-to-quiz transition, a shake on wrong answers, confetti on success.</p>
+        </div>
+      </div>
+      <div class="feature-meta">
+        <span class="chip">Flutter</span>
+        <span class="chip">Dart</span>
+        <span class="chip">Provider</span>
+        <span class="chip">Flutter TTS</span>
+      </div>
+      <div class="feature-links">
+        <a class="plink-light" href="https://peblo-web-demo.vercel.app" target="_blank" rel="noopener">Open web demo</a>
+        <a class="plink-light secondary" href="https://github.com/himanshuchauhan08072004-star/peblo-story-buddy" target="_blank" rel="noopener">View Flutter source</a>
+      </div>
+    </div>
+
+    <p class="concept-row-label reveal">Smaller builds &amp; explorations</p>
+    <div class="concept-grid reveal">
+      <div class="concept-card">
+        <span class="concept-tag">Concept</span>
+        <h4 class="concept-title">Online Examination System</h4>
+        <p class="concept-desc">A web exam platform with timed sessions, auto-submit on expiry, and a MySQL backend for questions and scores.</p>
+        <p class="concept-stack">HTML · CSS · JS · MySQL</p>
+      </div>
+      <div class="concept-card">
+        <span class="concept-tag">Concept</span>
+        <h4 class="concept-title">Snap AR Lens</h4>
+        <p class="concept-desc">An interactive AR face filter with real-time tracking and visual effects, optimized for smooth mobile performance.</p>
+        <p class="concept-stack">Snap Lens Studio</p>
+      </div>
+      <div class="concept-card">
+        <span class="concept-tag">Concept</span>
+        <h4 class="concept-title">Interactive Tic-Tac-Toe</h4>
+        <p class="concept-desc">Core game logic in vanilla JavaScript — win/draw detection and full restart-state handling.</p>
+        <p class="concept-stack">HTML · CSS · JS</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head reveal">
+      <div>
+        <p class="section-label">About</p>
+        <h2 class="section-title">Who's building this</h2>
+      </div>
+    </div>
+    <div class="about-layout reveal">
+      <div class="about-photo">
+        <img src="himanshu.jpg" alt="Himanshu Chauhan" />
+      </div>
+      <div>
+        <div class="about-text">
+          <p>I'm a <strong>third-year B.Tech Computer Science student</strong> with a strong interest in full stack development and emerging technologies like AI and machine learning.</p>
+          <p>I enjoy building practical projects, learning new technologies, and improving my problem-solving skills through hands-on experience — the projects above are a fair example of that: find a real problem, scope it small, ship something that actually works.</p>
+          <p>I'm currently looking for <strong>internship opportunities</strong> where I can gain real-world industry exposure, contribute to meaningful projects, and grow as a software developer.</p>
+        </div>
+        <div class="about-facts">
+          <span class="fact"><strong>Studying:</strong> B.Tech CS, 3rd year</span>
+          <span class="fact"><strong>Focus:</strong> Full Stack · AI/ML</span>
+          <span class="fact"><strong>Looking for:</strong> Internships</span>
+          <span class="fact"><strong>Based in:</strong> Gurugram, India</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="resume-band reveal" id="resume">
+    <div>
+      <h3>Want the short version?</h3>
+      <p>Everything above, plus education and certifications, in one page you can download or forward.</p>
+    </div>
+    <a class="btn btn-primary" href="Himanshu_Chauhan_Resume.pdf" id="resumeLink" download target="_blank" rel="noopener">Download resume ↓</a>
+  </div>
+
+  <footer>
+    <div class="contact-block">
+      <p><strong>Himanshu Chauhan</strong></p>
+      <p><a href="mailto:himanshuchauhan08072004@gmail.com">himanshuchauhan08072004@gmail.com</a> · +91 9350188283</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/himanshuchauhan08072004-star" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/himanshuchauhan08" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Iframe fallback: if it fails to load (e.g. blocked by frame headers), show a fallback message
+  function setupIframeFallback(iframeId, fallbackId){
+    const iframe = document.getElementById(iframeId);
+    const fallback = document.getElementById(fallbackId);
+    if(!iframe || !fallback) return;
+    let loaded = false;
+    iframe.addEventListener('load', () => { loaded = true; });
+    setTimeout(() => {
+      try {
+        if(!loaded){ fallback.style.display = 'flex'; }
+      } catch(e){
+        fallback.style.display = 'flex';
+      }
+    }, 3500);
+    iframe.addEventListener('error', () => { fallback.style.display = 'flex'; });
+  }
+  setupIframeFallback('demoIframe', 'demoFallback');
+  setupIframeFallback('pebloIframe', 'pebloFallback');
+
+  // Scroll-reveal, respects reduced motion via CSS already
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
