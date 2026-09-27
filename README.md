@@ -2,7 +2,7 @@
 
 A developer portfolio with two live, embedded, try-it-yourself demos instead of static screenshots.
 
-**Live site:** [add your Vercel URL here after deploying]
+## LIVE : https://portfolio-final-alpha-liart.vercel.app/
 
 ## Important: files must stay in the same folder (no subfolders)
 
